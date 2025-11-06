@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="p-6">
+  <h1 class="text-3xl font-bold mb-6 text-center">Panel Principal</h1>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+    <!-- Panel de Clientes -->
+    <div class="bg-sky-100 p-6 rounded-2xl shadow-md border-2 border-sky-300">
+      <h2 class="text-xl font-semibold text-sky-800 mb-4">Clientes</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <a href="{% url 'clients:list' %}" class="btn bg-sky-600 text-white hover:bg-sky-700">Listar</a>
+        <a href="{% url 'clients:add' %}" class="btn bg-sky-600 text-white hover:bg-sky-700">Agregar</a>
+        <a href="{% url 'clients:edit_select' %}" class="btn bg-sky-600 text-white hover:bg-sky-700">Modificar</a>
+      </div>
+    </div>
+
+    <!-- Panel de Proveedores -->
+    <div class="bg-emerald-100 p-6 rounded-2xl shadow-md border-2 border-emerald-300">
+      <h2 class="text-xl font-semibold text-emerald-800 mb-4">Proveedores</h2>
+      <div class="grid grid-cols-1 gap-3">
+        <a href="{% url 'suppliers:list' %}" class="btn bg-emerald-600 text-white hover:bg-emerald-700">Listar</a>
+        <a href="{% url 'suppliers:add' %}" class="btn bg-emerald-600 text-white hover:bg-emerald-700">Agregar</a>
+        <a href="{% url 'suppliers:edit_select' %}" class="btn bg-emerald-600 text-white hover:bg-emerald-700">Modificar</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<nav class="navbar bg-primary text-primary-content px-4">
+  <div class="flex-1">
+    <a href="{% url 'core:home' %}" class="btn btn-ghost normal-case text-xl">Sistema Gestión</a>
+  </div>
+  <div class="flex-none">
+    <ul class="menu menu-horizontal px-1">
+      <li><a href="{% url 'core:home' %}">Inicio</a></li>
+      <li>
+        <details>
+          <summary class="text-sky-200">Clientes</summary>
+          <ul class="p-2 bg-base-100 text-base-content">
+            <li><a href="{% url 'clients:list' %}">Listado</a></li>
+            <li><a href="{% url 'clients:add' %}">Agregar</a></li>
+            <li><a href="{% url 'clients:edit_select' %}">Modificar</a></li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <details>
+          <summary class="text-emerald-200">Proveedores</summary>
+          <ul class="p-2 bg-base-100 text-base-content">
+            <li><a href="{% url 'suppliers:list' %}">Listado</a></li>
+            <li><a href="{% url 'suppliers:add' %}">Agregar</a></li>
+            <li><a href="{% url 'suppliers:edit_select' %}">Modificar</a></li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  </div>
+</nav>

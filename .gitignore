@@ -1,0 +1,23 @@
+# Entorno virtual
+venv/
+.env
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+
+# Archivos de configuración del editor
+.vscode/
+.idea/
+*.swp
+
+# Archivos compilados de Tailwind
+src/ui/static/css/dist/
+src/ui/node_modules/
+src/ui/package-lock.json
+
+# Archivos de migraciones
+**/migrations/
+!**/migrations/__init__.py
