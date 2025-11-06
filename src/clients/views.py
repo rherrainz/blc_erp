@@ -19,3 +19,19 @@ def client_add(request):
 def client_edit_select(request):
     clients = Client.objects.all()
     return render(request, "clients/edit_select.html", {"clients": clients, "title": "Seleccionar Cliente"})
+
+def client_edit(request, client_id):
+    client = get_object_or_404(Client, id=client_id)
+
+    if request.method == 'POST':
+        form = ClientForm(request.POST, instance=client)
+        if form.is_valid():
+            form.save()
+            return redirect('clients:list')  # o donde quieras redirigir luego de guardar
+    else:
+        form = ClientForm(instance=client)
+
+    return render(request, 'clients/edit.html', {
+        'form': form,
+        'title': 'Modificar Cliente'
+    })

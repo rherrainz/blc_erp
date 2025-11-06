@@ -1,8 +1,18 @@
 {% extends "base.html" %}
 
 {% block content %}
-    {% include "components/page.html" with title=title %}
-    <div class="bg-emerald-100 p-6 rounded-xl shadow-md">
-        {% include "components/list_card.html" with object_list=suppliers %}
+  {% include "components/page.html" with title=title %}
+  
+  <form method="post" class="mt-6">
+    {% csrf_token %}
+    <div class="form-control w-full max-w-xs">
+      <label for="supplier" class="label">Seleccionar Proveedor</label>
+      <select name="supplier_id" id="supplier" class="select select-bordered w-full">
+        {% for supplier in suppliers %}
+          <option value="{{ supplier.id }}">{{ supplier }}</option>
+        {% endfor %}
+      </select>
     </div>
+    <button type="submit" class="btn btn-primary mt-4">Modificar</button>
+  </form>
 {% endblock %}

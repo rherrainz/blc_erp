@@ -8,3 +8,6 @@ class Supplier(Entity):
     class Meta:
         verbose_name = "Proveedor"
         verbose_name_plural = "Proveedores"
+
+    def __str__(self):
+        return f"{self.company_name} - {self.name}"

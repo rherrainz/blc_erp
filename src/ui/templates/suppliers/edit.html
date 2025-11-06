@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "components/page.html" with title=title %}
+  {% include "components/form.html" with form=form submit_label="Guardar cambios" %}
+{% endblock %}
