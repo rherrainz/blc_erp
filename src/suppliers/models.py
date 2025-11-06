@@ -1,9 +1,10 @@
 from django.db import models
+
 from core.models import Entity
 
 class Supplier(Entity):
-    company_name = models.CharField(max_length=255, blank=True, null=True)
+    notes = models.TextField(verbose_name="Notas", blank=True, null=True)
 
     class Meta:
-        verbose_name = "Supplier"
-        verbose_name_plural = "Suppliers"
+        verbose_name = "Proveedor"
+        verbose_name_plural = "Proveedores"

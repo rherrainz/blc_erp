@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% include "components/page.html" with title=title %}
+    <div class="bg-emerald-100 p-6 rounded-xl shadow-md">
+        {% include "components/list_card.html" with object_list=object_list %}
+    </div>
+{% endblock %}

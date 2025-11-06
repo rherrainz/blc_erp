@@ -1,0 +1,33 @@
+/* Overrides para inputs y textarea: forzar fondo blanco y color de texto
+   Se carga después de styles.css para tener prioridad. */
+
+/* Aplicar a clases utilitarias (daisyUI / Tailwind) y selectores nativos */
+.input,
+.input:focus,
+.textarea,
+.textarea:focus,
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  background-color: #ffffff !important;
+  color: #111827 !important; /* gris muy oscuro */
+  border-color: rgba(0,0,0,0.12) !important;
+}
+
+/* Si usas modos de tema (dark), asegurar contraste en dark también */
+[data-theme="dark"] .input,
+[data-theme="dark"] .textarea,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Opcional: placeholder color */
+::placeholder {
+  color: rgba(15,23,42,0.5) !important;
+}

@@ -1,10 +1,21 @@
-from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Supplier
+from .forms import SupplierForm
 
-def client_list(request):
-    return HttpResponse("Listado de clientes")
+def supplier_list(request):
+    suppliers = Supplier.objects.all()
+    return render(request, "suppliers/list.html", {"object_list": suppliers, "title": "Listado de Proveedores"})
 
-def client_add(request):
-    return HttpResponse("Agregar cliente")
+def supplier_add(request):
+    if request.method == "POST":
+        form = SupplierForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("suppliers:list")
+    else:
+        form = SupplierForm()
+    return render(request, "suppliers/add.html", {"form": form, "title": "Agregar Proveedor"})
 
-def client_edit_select(request):
-    return HttpResponse("Seleccionar cliente a modificar")
+def supplier_edit_select(request):
+    suppliers = Supplier.objects.all()
+    return render(request, "suppliers/edit_select.html", {"suppliers": suppliers, "title": "Seleccionar Proveedor"})
