@@ -1,4 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse
+from django.views.decorators.http import require_POST
 from .models import Supplier
 from .forms import SupplierForm
 
@@ -36,3 +38,17 @@ def supplier_edit(request, supplier_id):
         'title': 'Modificar Proveedor'
     })
 
+def supplier_detail(request, supplier_id):
+    supplier = get_object_or_404(Supplier, id=supplier_id)
+    return render(request, 'suppliers/detail.html', {
+        'entity': supplier,
+        'title': 'Detalle de Proveedor',
+        'edit_url': reverse('suppliers:edit', args=[supplier.id]),
+        'delete_url': reverse('suppliers:delete', args=[supplier.id])
+    })
+
+@require_POST
+def supplier_delete(request, supplier_id):
+    supplier = get_object_or_404(Supplier, id=supplier_id)
+    supplier.delete()
+    return redirect('suppliers:list')

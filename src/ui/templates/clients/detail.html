@@ -1,0 +1,5 @@
+{% extends "base.html" %}
+{% block content %}
+  {% include "components/page.html" with title=title %}
+  {% include "components/detail_card.html" with entity=entity edit_url=edit_url delete_url=delete_url title=title %}
+{% endblock %}

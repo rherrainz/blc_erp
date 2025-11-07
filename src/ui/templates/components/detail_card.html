@@ -1,0 +1,24 @@
+<div class="card bg-base-100 shadow-md p-6">
+  <h2 class="text-xl font-bold mb-4">{{ title }}</h2>
+
+  <div class="space-y-2">
+    <p><strong>Razón Social:</strong> {{ entity.company_name }}</p>
+    <p><strong>Nombre:</strong> {{ entity.name }}</p>
+    <p><strong>Email:</strong> {{ entity.email|default:"—" }}</p>
+    <p><strong>Teléfono:</strong> {{ entity.phone|default:"—" }}</p>
+    <p><strong>Dirección:</strong> {{ entity.address|default:"—" }}</p>
+    <p><strong>CUIT/CUIL:</strong> {{ entity.tax_id|default:"—" }}</p>
+    <p><strong>Notas:</strong> {{ entity.notes|default:"—" }}</p>
+    <p><strong>Activo:</strong> {{ entity.is_active|yesno:"Sí,No" }}</p>
+  </div>
+
+  <div class="mt-6 flex gap-4">
+    <a href="{{ edit_url }}" class="btn btn-warning">Editar</a>
+    <form method="post" action="{{ delete_url }}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-error" onclick="return confirm('¿Seguro que deseas eliminar este registro?')">
+        Eliminar
+      </button>
+    </form>
+  </div>
+</div>
