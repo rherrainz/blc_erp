@@ -6,7 +6,11 @@ from .forms import SupplierForm
 
 def supplier_list(request):
     suppliers = Supplier.objects.all()
-    return render(request, "suppliers/list.html", {"object_list": suppliers, "title": "Listado de Proveedores"})
+    return render(request, 'suppliers/list.html', {
+        'object_list': suppliers,
+        'title': 'Listado de Proveedores',
+        'model_name': 'supplier'
+    })
 
 def supplier_add(request):
     if request.method == "POST":

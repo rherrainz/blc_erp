@@ -1,17 +1,23 @@
 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
   {% for item in object_list %}
-    <div class="card bg-base-100 shadow-md border border-gray-200">
-      <div class="card-body">
-        <p class="text-lg font-semibold">{{ item }}</p>
+  <div class="card bg-base-100 shadow-md border border-gray-200">
+    <div class="card-body">
+      <p class="text-lg font-semibold">{{ item }}</p>
 
-        {% if object_list.model._meta.model_name == "client" %}
-          <a href="{% url 'clients:detail' item.id %}" class="btn btn-outline mt-4">Ver Detalle</a>
-        {% elif object_list.model._meta.model_name == "supplier" %}
-          <a href="{% url 'suppliers:detail' item.id %}" class="btn btn-outline mt-4">Ver Detalle</a>
-        {% endif %}
-      </div>
+      {% if model_name == "client" %}
+      <a href="{% url 'clients:detail' item.id %}" class="btn btn-outline mt-4"
+        >Ver Detalle</a
+      >
+      {% elif model_name == "supplier" %}
+      <a
+        href="{% url 'suppliers:detail' item.id %}"
+        class="btn btn-outline mt-4"
+        >Ver Detalle</a
+      >
+      {% endif %}
     </div>
-  {% empty %}
+    {% empty %}
     <p class="text-gray-500">No hay resultados.</p>
-  {% endfor %}
+    {% endfor %}
+  </div>
 </div>

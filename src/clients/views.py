@@ -6,7 +6,11 @@ from django.views.decorators.http import require_POST
 
 def client_list(request):
     clients = Client.objects.all()
-    return render(request, "clients/list.html", {"object_list": clients, "title": "Listado de Clientes"})
+    return render(request, 'clients/list.html', {
+        'object_list': clients,
+        'title': 'Listado de Clientes',
+        'model_name': 'client'
+    })
 
 def client_add(request):
     if request.method == "POST":
