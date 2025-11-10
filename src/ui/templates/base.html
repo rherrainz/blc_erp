@@ -1,29 +1,23 @@
-{% load static tailwind_tags %}
-
-{% tailwind_css %}
+{% load static tailwind_tags %} {% tailwind_css %}
 <!-- base.html -->
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>{% block title %}Dashboard{% endblock %}</title>
-    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'css/custom.css' %}" rel="stylesheet">
-</head>
-<body class="min-h-screen flex flex-col bg-gray-50 text-gray-800">
+    <link href="{% static 'css/dist/styles.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/custom.css' %}" rel="stylesheet" />
+  </head>
+<body class="bg-gray-50 text-gray-800">
+  <div class="min-h-screen max-w-screen-lg mx-auto flex flex-col">
+      <!-- NAVBAR -->
+      {% include 'partials/navbar.html' %}
 
-    <!-- NAVBAR -->
-    {% include 'partials/navbar.html' %}
+      <!-- CONTENIDO -->
+      <main class="flex-1">{% block content %}{% endblock %}</main>
 
-    <!-- CONTENIDO -->
-    <main class="flex-1 p-6">
-        {% block content %}{% endblock %}
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="bg-base-200 text-base-content p-4 text-center text-sm">
-        Práctica Profesional - Carrera Tecnologías de la Información - Universidad Kennedy · Autor: Rodrigo Herrainz
-    </footer>
-
-</body>
+      <!-- FOOTER -->
+      <footer>{% include 'partials/footer.html' %}</footer>
+    </div>
+  </body>
 </html>
