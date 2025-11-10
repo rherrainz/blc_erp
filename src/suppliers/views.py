@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse
 from django.views.decorators.http import require_POST
+from django.contrib import messages  # 👈 NEW
 from .models import Supplier
 from .forms import SupplierForm
 
@@ -17,7 +18,10 @@ def supplier_add(request):
         form = SupplierForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.success(request, "Proveedor creado correctamente.")  # 👈 NEW
             return redirect("suppliers:list")
+        else:
+            messages.error(request, "Revisá los datos: hay errores en el formulario.")  # 👈 NEW
     else:
         form = SupplierForm()
     return render(request, "suppliers/add.html", {"form": form, "title": "Agregar Proveedor"})
@@ -33,7 +37,10 @@ def supplier_edit(request, supplier_id):
         form = SupplierForm(request.POST, instance=supplier)
         if form.is_valid():
             form.save()
+            messages.success(request, "Proveedor actualizado correctamente.")  # 👈 NEW
             return redirect('suppliers:list')
+        else:
+            messages.error(request, "No se pudo actualizar: verificá los campos ingresados.")  # 👈 NEW
     else:
         form = SupplierForm(instance=supplier)
 
@@ -55,4 +62,5 @@ def supplier_detail(request, supplier_id):
 def supplier_delete(request, supplier_id):
     supplier = get_object_or_404(Supplier, id=supplier_id)
     supplier.delete()
+    messages.success(request, 'Proveedor eliminado correctamente.')  # 👈 NEW
     return redirect('suppliers:list')

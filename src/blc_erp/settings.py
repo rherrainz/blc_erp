@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from django.contrib.messages import constants as messages
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,6 +82,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'blc_erp.wsgi.application'
 
+
+# Messages
+MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+# Mapear niveles de Django a clases DaisyUI
+MESSAGE_TAGS = {
+    messages.DEBUG:   "alert-info",
+    messages.INFO:    "alert-info",
+    messages.SUCCESS: "alert-success",
+    messages.WARNING: "alert-warning",
+    messages.ERROR:   "alert-error",
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases

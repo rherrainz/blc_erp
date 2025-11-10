@@ -1,0 +1,19 @@
+{% if messages %}
+  <div class="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-full max-w-screen-sm px-4 space-y-2">
+    {% for message in messages %}
+      <div role="alert" class="alert {{ message.tags }} shadow">
+        <span class="flex items-center gap-2">
+          {% if message.level_tag == "success" %}✅{% elif message.level_tag == "error" %}⚠️{% elif message.level_tag == "warning" %}⚠️{% else %}ℹ️{% endif %}
+          {{ message }}
+        </span>
+        <button type="button" class="btn btn-sm btn-ghost" onclick="this.closest('.alert').remove()">✕</button>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script>
+    document.querySelectorAll('.alert').forEach(el => {
+      setTimeout(() => el && el.remove(), 4000);
+    });
+  </script>
+{% endif %}

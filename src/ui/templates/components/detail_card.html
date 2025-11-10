@@ -2,8 +2,8 @@
   <h2 class="text-xl font-bold mb-4">{{ title }}</h2>
 
   <div class="space-y-2">
-    <p><strong>Razón Social:</strong> {{ entity.company_name }}</p>
-    <p><strong>Nombre:</strong> {{ entity.name }}</p>
+    <p><strong>Razón Social:</strong> {{ entity.company_name|default:"—" }}</p>
+    <p><strong>Nombre:</strong> {{ entity.name|default:"—" }}</p>
     <p><strong>Email:</strong> {{ entity.email|default:"—" }}</p>
     <p><strong>Teléfono:</strong> {{ entity.phone|default:"—" }}</p>
     <p><strong>Dirección:</strong> {{ entity.address|default:"—" }}</p>
@@ -14,11 +14,21 @@
 
   <div class="mt-6 flex gap-4">
     <a href="{{ edit_url }}" class="btn btn-warning">Editar</a>
-    <form method="post" action="{{ delete_url }}">
-      {% csrf_token %}
-      <button type="submit" class="btn btn-error" onclick="return confirm('¿Seguro que deseas eliminar este registro?')">
+
+    {# Botón que abre el modal de confirmación #}
+    {% with mid=title|slugify|stringformat:"s"|add:"-"|add:entity.id %}
+      <button type="button"
+              class="btn btn-error"
+              onclick="document.getElementById('deleteModal-{{ mid }}').showModal()">
         Eliminar
       </button>
-    </form>
+
+      {# Modal reutilizable: envía POST a delete_url con CSRF, anti doble-submit, checkbox de confirmación #}
+      {% include "components/delete_modal.html" with
+         modal_id="deleteModal-"|add:mid
+         action_url=delete_url
+         item_label=entity.company_name|default:entity.name|default:entity|stringformat:"s"
+      %}
+    {% endwith %}
   </div>
 </div>

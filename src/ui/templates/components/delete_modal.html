@@ -1,0 +1,55 @@
+{# Parámetros requeridos:
+  modal_id: string único por página (ej. "deleteClientModal")
+  action_url: URL a la que se hace POST (ej. {% url 'clients:delete' entity.id %})
+  item_label: nombre descriptivo a mostrar (ej. entity.name)
+#}
+
+<dialog id="{{ modal_id }}" class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Confirmar eliminación</h3>
+    <p class="py-2">
+      Vas a eliminar: <span class="font-semibold">{{ item_label }}</span>.
+    </p>
+    <p class="text-sm opacity-80">
+      Esta acción no se puede deshacer.
+    </p>
+
+    <form method="post" action="{{ action_url }}"
+          class="mt-4"
+          onsubmit="
+            const btn = this.querySelector('button[type=submit]');
+            btn.disabled = true; btn.innerText = 'Eliminando…';
+          ">
+      {% csrf_token %}
+
+      <label class="label cursor-pointer justify-start gap-3">
+        <input id="{{ modal_id }}_check" type="checkbox" class="checkbox checkbox-error">
+        <span class="label-text">Confirmo la eliminación definitiva</span>
+      </label>
+
+      <div class="modal-action">
+        <button type="button" class="btn btn-ghost"
+                onclick="document.getElementById('{{ modal_id }}').close()">
+          Cancelar
+        </button>
+        <button type="submit" class="btn btn-error" disabled
+                id="{{ modal_id }}_submit">
+          Eliminar
+        </button>
+      </div>
+    </form>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+
+  <script>
+    // Habilitar botón sólo si se marca el check
+    (function () {
+      const modal = document.getElementById('{{ modal_id }}');
+      const chk = modal.querySelector('#{{ modal_id }}_check');
+      const btn = modal.querySelector('#{{ modal_id }}_submit');
+      chk.addEventListener('change', () => { btn.disabled = !chk.checked; });
+    })();
+  </script>
+</dialog>
