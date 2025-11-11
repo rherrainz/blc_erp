@@ -15,20 +15,23 @@
   <div class="mt-6 flex gap-4">
     <a href="{{ edit_url }}" class="btn btn-warning">Editar</a>
 
-    {# Botón que abre el modal de confirmación #}
-    {% with mid=title|slugify|stringformat:"s"|add:"-"|add:entity.id %}
-      <button type="button"
-              class="btn btn-error"
-              onclick="document.getElementById('deleteModal-{{ mid }}').showModal()">
-        Eliminar
-      </button>
+    {# ==== Cálculo robusto de variables para el modal ==== #}
+    {% with idstr=entity.id|stringformat:"s" %}
+      {% with mid=title|slugify|add:"-"|add:idstr %}
+        {% firstof entity.company_name entity.name entity as item_label %}
 
-      {# Modal reutilizable: envía POST a delete_url con CSRF, anti doble-submit, checkbox de confirmación #}
-      {% include "components/delete_modal.html" with
-         modal_id="deleteModal-"|add:mid
-         action_url=delete_url
-         item_label=entity.company_name|default:entity.name|default:entity|stringformat:"s"
-      %}
+        <button type="button"
+                class="btn btn-error"
+                onclick="document.getElementById('deleteModal-{{ mid }}').showModal()">
+          Eliminar
+        </button>
+
+        {# Pasamos variables al contexto y hacemos include sin 'with' en línea #}
+        {% with modal_id="deleteModal-"|add:mid action_url=delete_url item_label=item_label %}
+          {% include "components/delete_modal.html" %}
+        {% endwith %}
+
+      {% endwith %}
     {% endwith %}
   </div>
 </div>
