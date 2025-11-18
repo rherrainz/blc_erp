@@ -82,25 +82,18 @@ cd src
 python manage.py test --verbosity=2
 ```
 
-**Resultado:** 61 tests en ~0.4 segundos
+**Resultado:** 61 tests en ~0.4 segundos ⚡
 
 ### Cobertura
 
 ```bash
+cd src
 coverage run --source='.' manage.py test
 coverage report
 coverage html  # Abre htmlcov/index.html
 ```
 
 **Cobertura:** ~92%
-
-### Documentación de Testing
-
-- 📖 [QUICK_START.md](QUICK_START.md) - Comienza aquí (5 minutos)
-- 📘 [TESTING.md](TESTING.md) - Guía completa
-- 📙 [TESTING_EXAMPLES.md](TESTING_EXAMPLES.md) - 10 ejemplos avanzados
-- 📕 [CI_CD.md](CI_CD.md) - Configurar GitHub Actions, GitLab CI, etc.
-- 📓 [TEST_SUMMARY.md](TEST_SUMMARY.md) - Resumen ejecutivo
 
 ### Script Auxiliar
 
@@ -110,6 +103,20 @@ python run_tests.py all      # Todos los tests
 python run_tests.py models   # Solo modelos
 python run_tests.py coverage # Con cobertura
 ```
+
+### 📚 Documentación Completa de Testing
+
+Toda la documentación de testing se encuentra en la carpeta [`docs/testing/`](docs/testing/):
+
+| Documento | Descripción | Tiempo |
+|-----------|-------------|--------|
+| **[INDEX.md](docs/testing/INDEX.md)** | 📖 Índice y guía de navegación | 1 min |
+| **[QUICK_START.md](docs/testing/QUICK_START.md)** | 🚀 Guía rápida para comenzar | 5 min |
+| **[TESTING.md](docs/testing/TESTING.md)** | 📘 Guía completa y detallada | 15 min |
+| **[TESTING_EXAMPLES.md](docs/testing/TESTING_EXAMPLES.md)** | 📙 10 patrones y ejemplos avanzados | 20 min |
+| **[CI_CD.md](docs/testing/CI_CD.md)** | 📕 Integración continua (GitHub, GitLab, Jenkins) | 25 min |
+| **[TEST_SUMMARY.md](docs/testing/TEST_SUMMARY.md)** | 📓 Resumen ejecutivo y estadísticas | 10 min |
+| **[TESTING_CHECKLIST.md](docs/testing/TESTING_CHECKLIST.md)** | ✅ Checklist de completitud | 5 min |
 
 ---
 
