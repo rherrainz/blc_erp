@@ -68,7 +68,50 @@ python manage.py runserver
 
 ---
 
-## 🔍 Acceso
+## 🧪 Testing
+
+El proyecto incluye una suite completa de **61 tests** que cubren:
+- ✅ Modelos (Entity, Client, Supplier)
+- ✅ Formularios (ClientForm, SupplierForm)
+- ✅ Vistas HTTP (CRUD operations)
+
+### Ejecutar Tests
+
+```bash
+cd src
+python manage.py test --verbosity=2
+```
+
+**Resultado:** 61 tests en ~0.4 segundos
+
+### Cobertura
+
+```bash
+coverage run --source='.' manage.py test
+coverage report
+coverage html  # Abre htmlcov/index.html
+```
+
+**Cobertura:** ~92%
+
+### Documentación de Testing
+
+- 📖 [QUICK_START.md](QUICK_START.md) - Comienza aquí (5 minutos)
+- 📘 [TESTING.md](TESTING.md) - Guía completa
+- 📙 [TESTING_EXAMPLES.md](TESTING_EXAMPLES.md) - 10 ejemplos avanzados
+- 📕 [CI_CD.md](CI_CD.md) - Configurar GitHub Actions, GitLab CI, etc.
+- 📓 [TEST_SUMMARY.md](TEST_SUMMARY.md) - Resumen ejecutivo
+
+### Script Auxiliar
+
+```bash
+python run_tests.py help
+python run_tests.py all      # Todos los tests
+python run_tests.py models   # Solo modelos
+python run_tests.py coverage # Con cobertura
+```
+
+---
 
 - **Panel de administración**: http://localhost:8000/admin
 - **Sistema**: http://localhost:8000/

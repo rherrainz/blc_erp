@@ -1,0 +1,17 @@
+# Dependencias para testing
+# Instalar con: pip install -r requirements-testing.txt
+
+# Testing con pytest
+pytest>=7.4.0
+pytest-django>=4.7.0
+pytest-cov>=4.1.0
+
+# Coverage
+coverage>=7.2.0
+
+# Fixtures y utilidades
+factory-boy>=3.3.0  # Para crear fixtures con Factory Pattern
+faker>=19.0.0       # Para generar datos fake realistas
+
+# Mocking y patching
+responses>=0.23.0   # Para mockear HTTP requests
