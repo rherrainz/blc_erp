@@ -199,6 +199,17 @@ cd src && python manage.py test
 ### "Quiero automatizar tests en CI/CD"
 → **[CI_CD.md](CI_CD.md)**
 
+---
+
+## 🔐 Auditoría y Seguridad
+
+La documentación de auditoría y procesos de registro está disponible en:
+
+- **[Auditoría - Índice](../audit/INDEX.md)** : Políticas, implementación y guías prácticas.
+- **[AUDIT.md](../AUDIT.md)** : Resumen rápido y notas de diseño.
+
+Recomendado para: Administradores, Compliance, y DevOps.
+
 ### "Quiero saber qué está cubierto"
 → **[TEST_SUMMARY.md](TEST_SUMMARY.md)** sección "Cobertura"
 

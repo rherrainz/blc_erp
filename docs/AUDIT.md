@@ -25,3 +25,8 @@ Política recomendada
 ***
 
 Si quieres, implemento ahora los signal handlers y los tests básicos.
+
+Más documentación técnica y guías prácticas están en la carpeta `docs/audit/`:
+
+- `docs/audit/INDEX.md` — Índice y enlaces rápidos a la política e implementación.
+
