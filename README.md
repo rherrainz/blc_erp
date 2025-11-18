@@ -244,3 +244,12 @@ Para mantener el sistema limpio, modular y fácilmente escalable, se implementar
 ## 📄 Licencia
 
 Este proyecto se entrega exclusivamente con fines académicos y no posee licencia de uso comercial.
+
+---
+
+## 📚 Documentación del sistema
+
+La documentación completa del sistema (arquitectura, guía de uso, despliegue, mantenimiento, API y FAQ) se encuentra en la carpeta `docs/`.
+
+Empieza por: `docs/README.md`
+
