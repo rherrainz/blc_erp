@@ -1,3 +1,21 @@
 from django.contrib import admin
+from .models import AuditLog
 
-# Register your models here.
+
+@admin.register(AuditLog)
+class AuditLogAdmin(admin.ModelAdmin):
+	list_display = (
+		'timestamp', 'action', 'actor', 'content_type', 'object_pk', 'object_repr', 'ip_address'
+	)
+	list_filter = ('action', 'content_type', 'actor')
+	search_fields = ('object_repr', 'object_pk', 'ip_address', 'user_agent')
+	readonly_fields = [f.name for f in AuditLog._meta.fields]
+	date_hierarchy = 'timestamp'
+	ordering = ('-timestamp',)
+
+	def has_add_permission(self, request):
+		return False
+
+	def has_delete_permission(self, request, obj=None):
+		return False
+
